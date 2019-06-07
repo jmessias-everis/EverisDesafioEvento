@@ -52,6 +52,20 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
+        listEventos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Intent intent2 = new Intent(ListActivity.this, ListarParticipantesActivity.class);
+
+                Evento eventoSelecionado = (Evento) listEventos.getItemAtPosition(position);
+                intent2.putExtra("eventoSelec", eventoSelecionado);
+                intent2.putExtra("idUsuarioAtivo", idUsuarioAtivo);
+
+                startActivity(intent2);
+                return true;
+            }
+        });
+
 //        IMPLEMENTAR
 //        listEventos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 //            @Override

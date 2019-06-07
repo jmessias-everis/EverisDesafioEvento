@@ -37,10 +37,13 @@ public class ListarParticipantesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_listar_participantes);
 
         participanteDAO = new ParticipanteDAO(getBaseContext());
+        txtNomeEvento = (TextView) findViewById(R.id.txtLPNomeEvento);
+        txtCidadeEData = (TextView) findViewById(R.id.txtLPCidadeData);
+        txtLocalEHorario = (TextView) findViewById(R.id.txtLPLocalHorario);
 
-
-
-
+//        String cidadeEData = evento.getCidade() + " - " + evento.getData();
+//        String localEHorario = evento.getLocal() + " - " + evento.getHorario();
+//        String descVagas = "Total de vagas: " + evento.getVagas();
 
     }
 }
