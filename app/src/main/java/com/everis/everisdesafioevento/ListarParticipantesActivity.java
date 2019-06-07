@@ -23,7 +23,7 @@ public class ListarParticipantesActivity extends AppCompatActivity {
     TextView txtNomeEvento;
     TextView txtCidadeEData;
     TextView txtLocalEHorario;
-    TextView qntdVagas;
+    TextView tqntdVagas;
 
     private ArrayList<Participante> listaDeParticipantes = new ArrayList<>();
     private ParticipanteDAO participanteDAO = null;
@@ -40,6 +40,9 @@ public class ListarParticipantesActivity extends AppCompatActivity {
         txtNomeEvento = (TextView) findViewById(R.id.txtLPNomeEvento);
         txtCidadeEData = (TextView) findViewById(R.id.txtLPCidadeData);
         txtLocalEHorario = (TextView) findViewById(R.id.txtLPLocalHorario);
+        tqntdVagas = (TextView) findViewById(R.id.txtLPQtdVagas);
+
+
 
 //        String cidadeEData = evento.getCidade() + " - " + evento.getData();
 //        String localEHorario = evento.getLocal() + " - " + evento.getHorario();

@@ -60,7 +60,6 @@ public class ListActivity extends AppCompatActivity {
                 Evento eventoSelecionado = (Evento) listEventos.getItemAtPosition(position);
                 intent2.putExtra("eventoSelec", eventoSelecionado);
                 intent2.putExtra("idUsuarioAtivo", idUsuarioAtivo);
-
                 startActivity(intent2);
                 return true;
             }
