@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListarParticipantesActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtLPNomeEvento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="6dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="@color/verdeBtn"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtLPCidadeData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLPNomeEvento"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="6dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txtLPLocalHorario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLPCidadeData"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="6dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txtLPQtdVagas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLPLocalHorario"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="6dp"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            tools:text="TextView" />
+
+
+        <ListView
+            android:id="@+id/LV_ListarParticipante"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/linearLayoutBtn"
+            android:layout_below="@+id/txtLPQtdVagas"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp">
+
+        </ListView>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnLPCadastrar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/verdeBtn"
+                android:drawableLeft="@drawable/baseline_check_white_24dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/lp_editar"
+                android:textAllCaps="false"
+                android:textColor="@color/brancoText"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnLPVoltar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/verdeBtn"
+                android:drawableLeft="@drawable/baseline_check_white_24dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/lp_voltar"
+                android:textAllCaps="false"
+                android:textColor="@color/brancoText"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

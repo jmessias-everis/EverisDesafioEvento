@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Everis Desafio</string>
+    <string name="ce_evento">Evento</string>
+    <string name="ce_nome">Nome do evento</string>
+    <string name="ce_local">Local</string>
+    <string name="ce_local_evento">Local do evento</string>
+    <string name="ce_cidade">Cidade</string>
+    <string name="ce_cidade_evento">Cidade do evento</string>
+    <string name="ce_data">Data</string>
+    <string name="ce_data_evento">dd/mm/aaaa</string>
+    <string name="ce_horario">Horário</string>
+    <string name="ce_hora_evento">--:--</string>
+    <string name="ce_btcancelar">Cancelar</string>
+    <string name="ce_btcadastrar">Cadastrar</string>
+    <string name="ce_qtdVagas">Vagas</string>
+    <string name="ce_qtdTotalVagas">Total de vagas</string>
+
+    <string name="ie_bt_inscrever">Inscrever-me</string>
+    <string name="ie_sw_conhece_tema">Conhecimento sobre o tema?</string>
+    <string name="ie_nome">Nome</string>
+    <string name="ie_digite_nome">Digite aqui o nome</string>
+    <string name="ie_email">E-mail</string>
+    <string name="ie_digite_email">Digite aqui o e-mail</string>
+    <string name="ie_telefone">Telefone</string>
+    <string name="ie_digite_telefone">Digite aqui o telefone</string>
+    <string name="ie_txt_qtd_vagas">Total de vagas: </string>
+
+    <string name="lp_voltar">Voltar</string>
+    <string name="lp_editar">Editar</string>
+
+    <string name="TLogin">Login</string>
+    <string name="TEventos">Eventos Everis</string>
+
+    <string-array name="Eventos">
+        <item>Evento 01</item>
+        <item>Evento 02</item>
+        <item>Evento 03</item>
+        <item>Evento 04</item>
+        <item>Evento 05</item>
+        <item>Evento 06</item>
+        <item>Evento 07</item>
+        <item>Evento 08</item>
+        <item>Evento 09</item>
+        <item>Evento 10</item>
+
+    </string-array>
+</resources>
