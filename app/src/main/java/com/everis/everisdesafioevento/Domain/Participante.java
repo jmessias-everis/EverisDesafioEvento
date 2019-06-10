@@ -1,6 +1,6 @@
 package com.everis.everisdesafioevento.Domain;
 
-public class Participante {
+public class Participante implements Comparable<Participante> {
     private long id;
     private String nome;
     private String email;
@@ -64,5 +64,10 @@ public class Participante {
 
     public void setIdUsuario(long idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    @Override
+    public int compareTo(Participante participante) {
+        return getNome().compareTo(participante.getNome());
     }
 }

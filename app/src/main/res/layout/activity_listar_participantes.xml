@@ -89,24 +89,6 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnLPCadastrar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="6dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="6dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/verdeBtn"
-                android:drawableLeft="@drawable/baseline_check_white_24dp"
-                android:fontFamily="sans-serif"
-                android:text="@string/lp_editar"
-                android:textAllCaps="false"
-                android:textColor="@color/brancoText"
-                android:textSize="20sp" />
-
-            <Button
                 android:id="@+id/btnLPVoltar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -123,6 +105,25 @@
                 android:textAllCaps="false"
                 android:textColor="@color/brancoText"
                 android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnLPEditar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/verdeBtn"
+                android:drawableLeft="@drawable/baseline_check_white_24dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/lp_editar"
+                android:textAllCaps="false"
+                android:textColor="@color/brancoText"
+                android:textSize="20sp" />
+
         </LinearLayout>
 
     </RelativeLayout>

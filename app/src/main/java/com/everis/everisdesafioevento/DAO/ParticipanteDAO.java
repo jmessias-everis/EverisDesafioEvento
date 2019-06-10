@@ -126,7 +126,7 @@ public class ParticipanteDAO {
                     participante.setNome(cursor.getString(indNome));
                     participante.setEmail(cursor.getString(indEmail));
                     participante.setTelefone(cursor.getString(indTelefone));
-                    participante.setConheceTema(Boolean.parseBoolean(cursor.getString(indConheceTema)));
+                    participante.setConheceTema(cursor.getInt(indConheceTema) > 0);
                     participante.setIdUsuario(cursor.getInt(indIdUsuario));
 
                 participantes.add(participante);
@@ -142,7 +142,7 @@ public class ParticipanteDAO {
         participante.setNome(cursor.getString(1));
         participante.setEmail(cursor.getString(2));
         participante.setTelefone(cursor.getString(3));
-        participante.setConheceTema(Boolean.parseBoolean(cursor.getString(4)));
+        participante.setConheceTema(cursor.getInt(4)>0);
         participante.setIdUsuario(cursor.getLong(5));
         return participante;
     }

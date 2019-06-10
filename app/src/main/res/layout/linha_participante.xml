@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/linhaParticipante"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtParticipanteNome"
+            android:layout_width="290dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="7dp"
+            android:layout_toEndOf="@+id/imgLogo_Participante"
+            android:text="Nome do Participante"
+            android:textAlignment="textStart"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imgLogo_Participante"
+            android:layout_width="88dp"
+            android:layout_height="87dp"
+            app:srcCompat="@drawable/logo01" />
+
+        <TextView
+            android:id="@+id/txtEmailParticipante"
+            android:layout_width="293dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtParticipanteNome"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="7dp"
+            android:layout_toEndOf="@+id/imgLogo_Participante"
+            android:text="Email do Participante" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

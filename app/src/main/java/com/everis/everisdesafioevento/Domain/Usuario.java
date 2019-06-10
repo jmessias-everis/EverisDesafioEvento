@@ -14,7 +14,7 @@ public class Usuario implements Serializable {
         this.email = email;
         this.senha = senha;
         // ENQUANTO NAO TEM ACESSO AO DB DA EVERIS
-        if(matricula > 100000){
+        if(matricula >= 100000){
             this.admin = true;
         } else {
             this.admin = false;

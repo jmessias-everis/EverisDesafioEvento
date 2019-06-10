@@ -78,8 +78,8 @@ public class UsuarioDAO {
 
     public Usuario buscarPorId(long id){
         SQLiteDatabase database = helperDB.getReadableDatabase();
-        Cursor cursor = database.query(UsuarioDAO.TABLE_USUARIO, allColumns, UsuarioDAO.ID + " = "
-                + id, null, null,null,null);
+        Cursor cursor = database.query(UsuarioDAO.TABLE_USUARIO, allColumns, UsuarioDAO.ID + "='"
+                + id + "'", null, null,null,null);
 
         cursor.moveToFirst();
         return cursorToObject(cursor);
@@ -91,7 +91,7 @@ public class UsuarioDAO {
         usuario.setMatricula(cursor.getInt(1));
         usuario.setEmail(cursor.getString(2));
         usuario.setSenha(cursor.getString(3));
-        usuario.setAdmin(Boolean.parseBoolean(cursor.getString(4)));
+        usuario.setAdmin(cursor.getInt(4) > 0);
 
         return usuario;
     }

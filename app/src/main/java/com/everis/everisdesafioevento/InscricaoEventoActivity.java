@@ -38,7 +38,6 @@ public class InscricaoEventoActivity extends AppCompatActivity {
         idUsuarioAtivo = extras.getLong("idUsuarioAtivo");
         Evento evento = (Evento) extras.get("eventoSelec");
 
-
         txtNomeEvento = (TextView) findViewById(R.id.txtNomeEvento);
         txtCidadeEData = (TextView) findViewById(R.id.txtCidadeData);
         txtLocalEHorario = (TextView) findViewById(R.id.txtLocalHorario);
@@ -87,7 +86,7 @@ public class InscricaoEventoActivity extends AppCompatActivity {
                     participanteDAO.salvar(participante);
                 }
 
-                Registro registro = new Registro(evento.getId(), participanteDAO.buscarIdPorEmail(email));
+                Registro registro = new Registro(participanteDAO.buscarIdPorEmail(email), evento.getId());
                 if(registroDAO.salvar(registro)){
                     Toast.makeText(getApplicationContext(), "REGISTRO REALIZADO!", Toast.LENGTH_SHORT).show();
                 } else {
