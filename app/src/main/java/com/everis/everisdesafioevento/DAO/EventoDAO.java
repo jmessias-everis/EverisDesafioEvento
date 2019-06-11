@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.everis.everisdesafioevento.DAO.EventoDAO;
 import com.everis.everisdesafioevento.Domain.Evento;
+import com.everis.everisdesafioevento.EditarEventoActivity;
 import com.everis.everisdesafioevento.Infra.HelperDB;
 
 import java.util.ArrayList;
@@ -71,6 +72,23 @@ public class EventoDAO {
         return insertId > 0 ? Boolean.TRUE : Boolean.FALSE;
     }
 
+    public boolean salvarEdicaoEvento(Evento evento){
+        SQLiteDatabase database = helperDB.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(EventoDAO.NOME, evento.getNome());
+        values.put(EventoDAO.LOCAL, evento.getLocal());
+        values.put(EventoDAO.CIDADE, evento.getCidade());
+        values.put(EventoDAO.DATA, evento.getData());
+        values.put(EventoDAO.HORARIO, evento.getHorario());
+        values.put(EventoDAO.VAGAS, evento.getVagas());
+        values.put(EventoDAO.IMAGEM, evento.getImagem());
+
+        long insertId = database.update(EventoDAO.TABLE_EVENTO, values, ID + "=" + evento.getId(), null);
+
+        return insertId > 0 ? Boolean.TRUE : Boolean.FALSE;
+    }
+
     public Evento buscarPorId(long id){
         SQLiteDatabase database = helperDB.getReadableDatabase();
         Cursor cursor = database.query(EventoDAO.TABLE_EVENTO, allColumns, EventoDAO.ID + " = "
@@ -112,15 +130,24 @@ public class EventoDAO {
     }
 
     private Evento cursorToObject(Cursor cursor){
+        int indId = cursor.getColumnIndex(EventoDAO.ID);
+        int indNome = cursor.getColumnIndex(EventoDAO.NOME);
+        int indLocal = cursor.getColumnIndex(EventoDAO.LOCAL);
+        int indCidade = cursor.getColumnIndex(EventoDAO.CIDADE);
+        int indData = cursor.getColumnIndex(EventoDAO.DATA);
+        int indHorario = cursor.getColumnIndex(EventoDAO.HORARIO);
+        int indVagas = cursor.getColumnIndex(EventoDAO.VAGAS);
+        int indImagem = cursor.getColumnIndex(EventoDAO.IMAGEM);
+
         Evento evento = new Evento();
-        evento.setId(cursor.getLong(0));
-        evento.setNome(cursor.getString(1));
-        evento.setLocal(cursor.getString(2));
-        evento.setCidade(cursor.getString(3));
-        evento.setData(cursor.getString(4));
-        evento.setHorario(cursor.getString(5));
-        evento.setVagas(cursor.getInt(6));
-        evento.setImagem(cursor.getInt(7));
+        evento.setId(cursor.getLong(indId));
+        evento.setNome(cursor.getString(indNome));
+        evento.setLocal(cursor.getString(indLocal));
+        evento.setCidade(cursor.getString(indCidade));
+        evento.setData(cursor.getString(indData));
+        evento.setHorario(cursor.getString(indHorario));
+        evento.setVagas(cursor.getInt(indVagas));
+        evento.setImagem(cursor.getInt(indImagem));
         return evento;
     }
 }

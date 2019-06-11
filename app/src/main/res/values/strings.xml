@@ -30,6 +30,7 @@
 
     <string name="TLogin">Login</string>
     <string name="TEventos">Eventos Everis</string>
+    <string name="editar">Editar</string>
 
     <string-array name="Eventos">
         <item>Evento 01</item>

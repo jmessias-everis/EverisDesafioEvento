@@ -210,13 +210,13 @@
                     android:textSize="18sp" />
 
                 <Button
-                    android:id="@+id/btnEdECadastrar"
+                    android:id="@+id/btnEdEEditar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="@color/verdeBtn"
                     android:drawableLeft="@drawable/baseline_check_white_24dp"
-                    android:text="@string/ce_btcadastrar"
+                    android:text="@string/editar"
                     android:textColor="@color/brancoText"
                     android:textSize="18sp" />
             </LinearLayout>

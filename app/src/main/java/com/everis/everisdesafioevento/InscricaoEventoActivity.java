@@ -34,7 +34,8 @@ public class InscricaoEventoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_inscricao_evento);
 
         Bundle extras = getIntent().getExtras();
-
+//        Outra forma de receber os dados.
+//        idUsuarioAtivo = getIntent().getLongExtra("idUsuarioAtivo", -1);
         idUsuarioAtivo = extras.getLong("idUsuarioAtivo");
         Evento evento = (Evento) extras.get("eventoSelec");
 
