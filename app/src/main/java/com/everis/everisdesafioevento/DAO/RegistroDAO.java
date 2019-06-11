@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.everis.everisdesafioevento.Domain.Evento;
 import com.everis.everisdesafioevento.Domain.Participante;
 import com.everis.everisdesafioevento.Domain.Registro;
 import com.everis.everisdesafioevento.Infra.HelperDB;
@@ -16,6 +17,7 @@ public class RegistroDAO {
     private static final String ID = "_id";
     private static final String ID_EVENTO = "id_evento";
     private static final String ID_PARTICIPANTE = "id_participante";
+    private static final String PARTICIPANTE_ATIVO = "participante_ativo";
 
     public static final String TABLE_REGISTRO = "registro";
 
@@ -23,14 +25,16 @@ public class RegistroDAO {
             + TABLE_REGISTRO + "( "
             + ID + " integer primary key autoincrement, "
             + ID_EVENTO + " integer not null, "
-            + ID_PARTICIPANTE + " integer not null);";
+            + ID_PARTICIPANTE + " integer not null, "
+            + PARTICIPANTE_ATIVO + " boolean not null);";
 
     private HelperDB helperDB;
 
     private String[] allColumns = {
             RegistroDAO.ID,
             RegistroDAO.ID_EVENTO,
-            RegistroDAO.ID_PARTICIPANTE
+            RegistroDAO.ID_PARTICIPANTE,
+            RegistroDAO.PARTICIPANTE_ATIVO
     };
 
     public RegistroDAO(Context context){
@@ -45,10 +49,23 @@ public class RegistroDAO {
         }
         values.put(RegistroDAO.ID_EVENTO, registro.getIdEvento());
         values.put(RegistroDAO.ID_PARTICIPANTE, registro.getIdParticipante());
+        values.put(RegistroDAO.PARTICIPANTE_ATIVO, registro.isAtivo());
 
         long insertId = database.insert(RegistroDAO.TABLE_REGISTRO, null, values);
 
         return insertId > 0 ? Boolean.TRUE : Boolean.FALSE;
+    }
+
+    public boolean inativarParticipanteNoEvento(Registro registro){ // Torna participante inativo no evento
+        SQLiteDatabase database = helperDB.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(RegistroDAO.PARTICIPANTE_ATIVO,  0);
+
+        long insertId = database.update(RegistroDAO.TABLE_REGISTRO, values, ID + "=?" ,
+                new String[]{String.valueOf(registro.getId())});
+
+        return insertId > 0;
     }
 
     public Registro buscarPorId(long id){
@@ -59,10 +76,10 @@ public class RegistroDAO {
         return cursorToObject(cursor);
     }
 
-    public int contParticipantesPorIdEvento(long id){
+    public int contParticipantesPorIdEvento(long idEvento){
         SQLiteDatabase database = helperDB.getReadableDatabase();
         Cursor cursor = database.query(RegistroDAO.TABLE_REGISTRO, allColumns, RegistroDAO.ID_EVENTO + "='"
-                + id + "'", null, null,null,null);
+                + idEvento + "' AND " + RegistroDAO.PARTICIPANTE_ATIVO + "=1", null, null,null,null);
         return cursor.getCount();
     }
 
@@ -72,8 +89,10 @@ public class RegistroDAO {
                 " INNER JOIN " + TABLE_REGISTRO +
                 " ON " + ParticipanteDAO.TABLE_PARTICIPANTE + "." + ParticipanteDAO.ID + " = " +
                 TABLE_REGISTRO + "." + ID_PARTICIPANTE +
-                " WHERE " + TABLE_REGISTRO + "." + ID_EVENTO + "=" + idEvento, null);
+                " WHERE " + TABLE_REGISTRO + "." + ID_EVENTO + "=" + idEvento +
+                " AND "+ TABLE_REGISTRO + "." + PARTICIPANTE_ATIVO + "=1", null);
 
+        /**/
         ArrayList<Participante> participantes = new ArrayList<>();
         if (cursor.moveToFirst()) {
             int indId = cursor.getColumnIndex(ParticipanteDAO.ID);

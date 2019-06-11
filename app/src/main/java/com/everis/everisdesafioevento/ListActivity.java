@@ -43,8 +43,6 @@ public class ListActivity extends AppCompatActivity {
         eventoDAO = new EventoDAO(getBaseContext());
         usuarioDAO = new UsuarioDAO(getBaseContext());
 
-//        le_bt_novoEvento.setVisibility(View.VISIBLE);
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             idUsuarioAtivo = extras.getLong("idUsuarioAtivo");

@@ -31,6 +31,8 @@
     <string name="TLogin">Login</string>
     <string name="TEventos">Eventos Everis</string>
     <string name="editar">Editar</string>
+    <string name="ativo">Ativo:</string>
+    <string name="excluir">Excluir</string>
 
     <string-array name="Eventos">
         <item>Evento 01</item>

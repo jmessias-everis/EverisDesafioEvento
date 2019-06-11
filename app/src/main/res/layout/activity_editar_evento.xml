@@ -198,6 +198,17 @@
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
+                <!--<Button-->
+                    <!--android:id="@+id/btnEdE_ExcluirEvento"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:backgroundTint="@color/vermelhoBtn"-->
+                    <!--android:drawableLeft="@drawable/baseline_clear_white_24dp"-->
+                    <!--android:text="@string/excluir"-->
+                    <!--android:textColor="@color/brancoText"-->
+                    <!--android:textSize="14sp" />-->
+
                 <Button
                     android:id="@+id/btnEdECancelar"
                     android:layout_width="wrap_content"

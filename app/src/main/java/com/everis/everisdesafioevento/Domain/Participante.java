@@ -1,6 +1,8 @@
 package com.everis.everisdesafioevento.Domain;
 
-public class Participante implements Comparable<Participante> {
+import java.io.Serializable;
+
+public class Participante implements Serializable, Comparable<Participante> {
     private long id;
     private String nome;
     private String email;

@@ -2,6 +2,7 @@ package com.everis.everisdesafioevento.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -62,6 +63,25 @@ public class ParticipanteDAO {
 
         return insertId > 0 ? Boolean.TRUE : Boolean.FALSE;
     }
+
+    public boolean deletarParticipante(Participante participante){
+        SQLiteDatabase database = helperDB.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        if(participante.getId() != 0){
+            values.put(ParticipanteDAO.ID, participante.getId());
+        }
+        values.put(ParticipanteDAO.NOME, participante.getNome());
+        values.put(ParticipanteDAO.EMAIL, participante.getEmail());
+        values.put(ParticipanteDAO.TELEFONE, participante.getTelefone());
+        values.put(ParticipanteDAO.CONHECE_TEMA, participante.isConheceTema());
+        values.put(ParticipanteDAO.ID_USUARIO, participante.getIdUsuario());
+
+        long insertId = database.insert(ParticipanteDAO.TABLE_PARTICIPANTE, null, values);
+
+        return insertId > 0 ? Boolean.TRUE : Boolean.FALSE;
+    }
+
 
     public Participante buscarPorId(long id){
         SQLiteDatabase database = helperDB.getReadableDatabase();
