@@ -50,30 +50,29 @@ public class CadastroEventoActivity extends AppCompatActivity {
         }
     };
 
-    private void checarCamposVazios(){
-        edtCEEvento = "oi";
-//        EditText edtCECidade;
-//        EditText edtCELocal;
-//        TextView txtCEData;
-//        TextView txtCEHora;
-//        EditText edtCEVagas;
+    private void checarCamposVazios() {
+        String tCEEvento = (String) edtCEEvento.getText().toString();
+        String tCECidade = (String) edtCECidade.getText().toString();
+        String tCELocal = (String) edtCELocal.getText().toString();
+        String tCEData = (String) txtCEData.getText().toString();
+        String tCEHora = (String) txtCEHora.getText().toString();
+        String tCEVagas = (String) edtCEVagas.getText().toString();
 
-        if (edtCEEvento.equals("")){
+        if(tCEEvento.equals("")||tCECidade.equals("")||tCELocal.equals("")
+            ||tCEData.equals("") || tCEHora.equals("") || tCEVagas.equals(""))
 
+        {
+            btnCECadastrar.setEnabled(false);
+            btnCECadastrar.setAlpha(.5f);
+        } else
+
+        {
+            btnCECadastrar.setEnabled(true);
+            btnCECadastrar.setAlpha(1.0f);
         }
-        String sMatricula = (String) edtMatricula.getText().toString();
-        String sEmail = (String) edtEmail.getText().toString();
-        String sSenha = (String) edtSenha.getText().toString();
 
+}
 
-        if(sMatricula.equals("") || sEmail.equals("") || sSenha.equals("")){
-            btnEntrar.setEnabled(false);
-            btnEntrar.setAlpha(.5f);
-        } else {
-            btnEntrar.setEnabled(true);
-            btnEntrar.setAlpha(1.0f);
-        }
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +93,16 @@ public class CadastroEventoActivity extends AppCompatActivity {
 
 //        edtCEData.addTextChangedListener(Mask.insert("##/##/####", edtCEData));
 //        edtCEHora.addTextChangedListener(Mask.insert("##:##", edtCEHora));
+
+        edtCEEvento.addTextChangedListener(textWatcher);
+        edtCECidade.addTextChangedListener(textWatcher);
+        edtCELocal.addTextChangedListener(textWatcher);
+        txtCEData.addTextChangedListener(textWatcher);
+        txtCEHora.addTextChangedListener(textWatcher);
+        edtCEVagas.addTextChangedListener(textWatcher);
+
+        btnCECadastrar.setEnabled(false);
+        btnCECadastrar.setAlpha(.5f);
 
         txtCEData.setOnClickListener(new View.OnClickListener() {
             @Override
