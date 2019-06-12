@@ -56,6 +56,7 @@ public class UsuarioDAO {
         return insertId > 0 ? Boolean.TRUE : Boolean.FALSE;
     }
 
+
     public boolean verificarSeUsuarioExiste(String email){
         SQLiteDatabase database = helperDB.getReadableDatabase();
         Cursor cursor = database.query(UsuarioDAO.TABLE_USUARIO, allColumns, UsuarioDAO.EMAIL + "='"

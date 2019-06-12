@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.everis.everisdesafioevento.DAO.EventoDAO;
 import com.everis.everisdesafioevento.Domain.Evento;
+import com.everis.everisdesafioevento.Domain.Participante;
 import com.everis.everisdesafioevento.EditarEventoActivity;
 import com.everis.everisdesafioevento.Infra.HelperDB;
 
@@ -21,6 +22,7 @@ public class EventoDAO {
     private static final String DATA = "data";
     private static final String HORARIO = "horario";
     private static final String VAGAS = "vagas";
+    private static final String ATIVO = "ativo";
     private static final String IMAGEM = "imagem";
 
     public static final String TABLE_EVENTO = "evento";
@@ -34,6 +36,7 @@ public class EventoDAO {
             + DATA + " text not null, "
             + HORARIO + " text not null, "
             + VAGAS + " integer not null, "
+            + ATIVO + " boolean not null, "
             + IMAGEM + " integer not null);";
 
     private HelperDB helperDB;
@@ -46,6 +49,7 @@ public class EventoDAO {
             EventoDAO.DATA,
             EventoDAO.HORARIO,
             EventoDAO.VAGAS,
+            EventoDAO.ATIVO,
             EventoDAO.IMAGEM
     };
 
@@ -65,11 +69,12 @@ public class EventoDAO {
         values.put(EventoDAO.DATA, evento.getData());
         values.put(EventoDAO.HORARIO, evento.getHorario());
         values.put(EventoDAO.VAGAS, evento.getVagas());
+        values.put(EventoDAO.ATIVO, evento.isAtivo());
         values.put(EventoDAO.IMAGEM, evento.getImagem());
 
         long insertId = database.insert(EventoDAO.TABLE_EVENTO, null, values);
 
-        return insertId > 0 ? Boolean.TRUE : Boolean.FALSE;
+        return insertId > 0;
     }
 
     public boolean salvarEdicaoEvento(Evento evento){
@@ -82,11 +87,24 @@ public class EventoDAO {
         values.put(EventoDAO.DATA, evento.getData());
         values.put(EventoDAO.HORARIO, evento.getHorario());
         values.put(EventoDAO.VAGAS, evento.getVagas());
+        values.put(EventoDAO.ATIVO, evento.isAtivo());
         values.put(EventoDAO.IMAGEM, evento.getImagem());
 
         long insertId = database.update(EventoDAO.TABLE_EVENTO, values, ID + "=" + evento.getId(), null);
 
         return insertId > 0 ? Boolean.TRUE : Boolean.FALSE;
+    }
+
+    public boolean deletarEvento(Evento evento){
+        SQLiteDatabase database = helperDB.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(EventoDAO.ATIVO,  0);
+
+        long insertId = database.update(EventoDAO.TABLE_EVENTO, values, ID + "=?" ,
+                new String[]{String.valueOf(evento.getId())});
+
+        return insertId > 0;
+
     }
 
     public Evento buscarPorId(long id){
@@ -99,7 +117,7 @@ public class EventoDAO {
 
     public ArrayList<Evento> buscarTodos(){
         SQLiteDatabase database = helperDB.getReadableDatabase();
-        Cursor cursor = database.query(EventoDAO.TABLE_EVENTO, allColumns, null, null,null,null,null);
+        Cursor cursor = database.query(EventoDAO.TABLE_EVENTO, allColumns,EventoDAO.ATIVO + "=1"  , null,null,null,null);
         ArrayList<Evento> eventos = new ArrayList<>();
 
         if (cursor.moveToFirst()) {
@@ -110,6 +128,7 @@ public class EventoDAO {
             int indData = cursor.getColumnIndex(EventoDAO.DATA);
             int indHorario = cursor.getColumnIndex(EventoDAO.HORARIO);
             int indVagas = cursor.getColumnIndex(EventoDAO.VAGAS);
+            int indAtivo = cursor.getColumnIndex(EventoDAO.ATIVO);
             int indImagem = cursor.getColumnIndex(EventoDAO.IMAGEM);
 
             do {
@@ -121,6 +140,7 @@ public class EventoDAO {
                 evento.setData(cursor.getString(indData));
                 evento.setHorario(cursor.getString(indHorario));
                 evento.setVagas(cursor.getInt(indVagas));
+                evento.setAtivo(cursor.getInt(indAtivo) > 0);
                 evento.setImagem(cursor.getInt(indImagem));
                 eventos.add(evento);
             } while (cursor.moveToNext());
@@ -137,6 +157,7 @@ public class EventoDAO {
         int indData = cursor.getColumnIndex(EventoDAO.DATA);
         int indHorario = cursor.getColumnIndex(EventoDAO.HORARIO);
         int indVagas = cursor.getColumnIndex(EventoDAO.VAGAS);
+        int indAtivo = cursor.getColumnIndex(EventoDAO.ATIVO);
         int indImagem = cursor.getColumnIndex(EventoDAO.IMAGEM);
 
         Evento evento = new Evento();
@@ -147,6 +168,7 @@ public class EventoDAO {
         evento.setData(cursor.getString(indData));
         evento.setHorario(cursor.getString(indHorario));
         evento.setVagas(cursor.getInt(indVagas));
+        evento.setAtivo(cursor.getInt(indAtivo) > 0);
         evento.setImagem(cursor.getInt(indImagem));
         return evento;
     }

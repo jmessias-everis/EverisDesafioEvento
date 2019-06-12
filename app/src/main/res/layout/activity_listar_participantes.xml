@@ -84,10 +84,10 @@
         <LinearLayout
             android:id="@+id/linearLayoutBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_height="52dp"
+            android:layout_above="@+id/btnLPDeletar"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="2dp"
             android:orientation="horizontal">
 
             <Button
@@ -101,7 +101,7 @@
                 android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/verdeBtn"
-                android:drawableLeft="@drawable/baseline_check_white_24dp"
+                android:drawableLeft="@drawable/baseline_undo_white_18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/lp_voltar"
                 android:textAllCaps="false"
@@ -119,7 +119,7 @@
                 android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/verdeBtn"
-                android:drawableLeft="@drawable/baseline_check_white_24dp"
+                android:drawableLeft="@drawable/baseline_edit_white_18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/lp_editar"
                 android:textAllCaps="false"
@@ -127,6 +127,24 @@
                 android:textSize="20sp" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnLPDeletar"
+            android:layout_width="403dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="6dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/vermelhoBtn"
+            android:drawableLeft="@drawable/baseline_delete_forever_white_18dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/lp_deletar"
+            android:textAllCaps="false"
+            android:textColor="@color/brancoText"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 

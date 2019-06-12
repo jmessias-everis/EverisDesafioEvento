@@ -13,9 +13,18 @@ public class Evento implements Serializable, Comparable<Evento>{
     private LocalDate data;
     private LocalTime horario;
     private int vagas;
+    private boolean ativo;
     private int imagem;
 
     public Evento(){}
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
 
     public Evento(String nome, String local, String cidade, String data, String horario, int imagem, int vagas) {
         this.nome = nome;
@@ -25,6 +34,7 @@ public class Evento implements Serializable, Comparable<Evento>{
         this.horario = new LocalTime(horario);
         this.imagem = imagem;
         this.vagas = vagas;
+        this.ativo = true;
     }
 
     public long getId() {

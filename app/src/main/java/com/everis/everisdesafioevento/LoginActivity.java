@@ -15,6 +15,7 @@ import com.everis.everisdesafioevento.Domain.Usuario;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private UsuarioDAO usuarioDAO;
     private Button btnEntrar;
     private EditText edtMatricula;
     private EditText edtEmail;
@@ -83,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 usuario = usuarioDAO.buscarPorEmail(email);
 
-                Intent intent = new Intent(LoginActivity.this, ListActivity.class);
+                Intent intent = new Intent(LoginActivity.this, ListarEventosActivity.class);
                 intent.putExtra("idUsuarioAtivo", usuario.getId());
                 startActivity(intent);
             }

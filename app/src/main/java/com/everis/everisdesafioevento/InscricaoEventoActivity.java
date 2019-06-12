@@ -15,6 +15,7 @@ import com.everis.everisdesafioevento.Domain.Participante;
 import com.everis.everisdesafioevento.Domain.Registro;
 import com.everis.everisdesafioevento.DAO.ParticipanteDAO;
 import com.everis.everisdesafioevento.DAO.RegistroDAO;
+import com.everis.everisdesafioevento.Mask.Mask;
 
 public class InscricaoEventoActivity extends AppCompatActivity {
     TextView txtNomeEvento;
@@ -65,16 +66,16 @@ public class InscricaoEventoActivity extends AppCompatActivity {
         final ParticipanteDAO participanteDAO = new ParticipanteDAO(getBaseContext());
         final RegistroDAO registroDAO = new RegistroDAO(getBaseContext());
 
-        btnCadastrar = (Button) findViewById(R.id.btnIECadastrar);
+        edtNome = findViewById(R.id.edtIENome);
+        edtEmail = findViewById(R.id.edtIEEmail);
+        edtTelefone = findViewById(R.id.edtIETelefone);
+        swConhece = findViewById(R.id.swConheceTema);
+        btnCadastrar = findViewById(R.id.btnIECadastrar);
 
+        edtTelefone.addTextChangedListener(Mask.insert("(##)#####-####", edtTelefone));
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                edtNome = (EditText) findViewById(R.id.edtIENome);
-                edtEmail = (EditText) findViewById(R.id.edtIEEmail);
-                edtTelefone = (EditText) findViewById(R.id.edtIETelefone);
-                swConhece = (Switch) findViewById(R.id.swConheceTema);
 
                 String nome = edtNome.getText().toString();
                 String email = edtEmail.getText().toString();
@@ -94,7 +95,7 @@ public class InscricaoEventoActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "REGISTRO NÃO FOI REALIZADO!", Toast.LENGTH_SHORT).show();
                 }
 
-                Intent intent = new Intent(InscricaoEventoActivity.this, ListActivity.class);
+                Intent intent = new Intent(InscricaoEventoActivity.this, ListarEventosActivity.class);
                 intent.putExtra("idUsuarioAtivo", idUsuarioAtivo);
                 startActivity(intent);
             }

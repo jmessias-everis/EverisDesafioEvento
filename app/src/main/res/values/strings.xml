@@ -33,6 +33,7 @@
     <string name="editar">Editar</string>
     <string name="ativo">Ativo:</string>
     <string name="excluir">Excluir</string>
+    <string name="lp_deletar">Deletar</string>
 
     <string-array name="Eventos">
         <item>Evento 01</item>

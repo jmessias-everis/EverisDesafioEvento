@@ -9,9 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +30,7 @@ public class ListarParticipantesActivity extends AppCompatActivity {
     TextView tqntdVagas;
     Button btnVoltar;
     Button btnEditar;
+    Button btnDeletar;
 
     AlertDialog alertDialog;
     private ArrayList<Participante> listaDeParticipantes = new ArrayList<>();
@@ -69,6 +68,7 @@ public class ListarParticipantesActivity extends AppCompatActivity {
 
         btnVoltar = (Button) findViewById(R.id.btnLPVoltar);
         btnEditar = (Button) findViewById(R.id.btnLPEditar);
+        btnDeletar = findViewById(R.id.btnLPDeletar);
         txtNomeEvento = (TextView) findViewById(R.id.txtLPNomeEvento);
         txtCidadeEData = (TextView) findViewById(R.id.txtLPCidadeData);
         txtLocalEHorario = (TextView) findViewById(R.id.txtLPLocalHorario);
@@ -86,7 +86,7 @@ public class ListarParticipantesActivity extends AppCompatActivity {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ListarParticipantesActivity.this, ListActivity.class);
+                Intent intent = new Intent(ListarParticipantesActivity.this, ListarEventosActivity.class);
                 intent.putExtra("idUsuarioAtivo", idUsuarioAtivo);
                 startActivity(intent);
             }
@@ -114,10 +114,37 @@ public class ListarParticipantesActivity extends AppCompatActivity {
             idUsuarioAtivo = extras.getLong("idUsuarioAtivo");
             eventoSelecionado = (Evento) extras.get("eventoSelec");
         }
+        final Evento evento = new Evento();
+        btnDeletar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ListarParticipantesActivity.this);
+                builder.setTitle("Deletar");
+                builder.setMessage("Deseja apagar este evento?");
+                builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        eventoDAO.deletarEvento(eventoDAO.buscarPorId(eventoSelecionado.getId()));
+                        Toast.makeText(getApplicationContext(), "Evento deletado!" + arg1, Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(ListarParticipantesActivity.this, ListarEventosActivity.class);
+                        intent.putExtra("idUsuarioAtivo", idUsuarioAtivo);
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                    }
+                });
+                alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
 
         if (!listaParticipantes.isEmpty()) {
             ArrayAdapter adapter = new ParticipanteAdapter(ListarParticipantesActivity.this, listaParticipantes);
             participanteList.setAdapter(adapter);
+
             participanteList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -125,7 +152,7 @@ public class ListarParticipantesActivity extends AppCompatActivity {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(ListarParticipantesActivity.this);
                     builder.setTitle("Deletar");
-                    builder.setMessage("Deletar este usuário?");
+                    builder.setMessage("Deseja apagar este participante?");
                     builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface arg0, int arg1) {
                             registroDAO.inativarParticipanteNoEvento(registroDAO.buscarPorId(participanteSelecionado.getId()));

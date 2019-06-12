@@ -21,7 +21,7 @@ import com.everis.everisdesafioevento.Domain.Usuario;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class ListActivity extends AppCompatActivity {
+public class ListarEventosActivity extends AppCompatActivity {
 
     private ArrayList<Evento> listaDeEventos = new ArrayList<>();
     private EventoDAO eventoDAO = null;
@@ -37,7 +37,7 @@ public class ListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
+        setContentView(R.layout.activity_listar_eventos);
 
         le_bt_novoEvento = (Button) findViewById(R.id.btnLENovoEvento);
         eventoDAO = new EventoDAO(getBaseContext());
@@ -47,7 +47,6 @@ public class ListActivity extends AppCompatActivity {
         if (extras != null) {
             idUsuarioAtivo = extras.getLong("idUsuarioAtivo");
         }
-//        usuario = usuarioDAO.buscarPorId(idUsuarioAtivo);
 
         if(!usuarioDAO.buscarPorId(idUsuarioAtivo).isAdmin()) {
             le_bt_novoEvento.setVisibility(View.INVISIBLE);
@@ -58,7 +57,7 @@ public class ListActivity extends AppCompatActivity {
         listEventos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent2 = new Intent(ListActivity.this, InscricaoEventoActivity.class);
+                Intent intent2 = new Intent(ListarEventosActivity.this, InscricaoEventoActivity.class);
 
                 Evento eventoSelecionado = (Evento) listEventos.getItemAtPosition(position);
                 intent2.putExtra("eventoSelec", eventoSelecionado);
@@ -71,7 +70,7 @@ public class ListActivity extends AppCompatActivity {
         listEventos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Intent intent2 = new Intent(ListActivity.this, ListarParticipantesActivity.class);
+                Intent intent2 = new Intent(ListarEventosActivity.this, ListarParticipantesActivity.class);
 
                 participante = new Participante();
                 Evento eventoSelecionado = (Evento) listEventos.getItemAtPosition(position);
@@ -85,7 +84,7 @@ public class ListActivity extends AppCompatActivity {
         le_bt_novoEvento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent3 = new Intent(ListActivity.this, CadastroEventoActivity.class);
+                Intent intent3 = new Intent(ListarEventosActivity.this, CadastroEventoActivity.class);
                 intent3.putExtra("idUsuarioAtivo", idUsuarioAtivo);
                 startActivity(intent3);
             }
