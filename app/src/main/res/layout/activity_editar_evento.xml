@@ -121,15 +121,22 @@
                 android:text="@string/ce_cidade"
                 android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/edtEdECidade"
+            <!--<EditText-->
+                <!--android:id="@+id/edtEdECidade"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:ems="10"-->
+                <!--android:hint="@string/ce_cidade_evento"-->
+                <!--android:inputType="textPersonName" />-->
+
+            <Spinner
+                android:id="@+id/spinner_EECidade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:ems="10"
-                android:hint="@string/ce_cidade_evento"
-                android:inputType="textPersonName" />
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" />
 
             <TextView
                 android:id="@+id/txtEdETelefone"

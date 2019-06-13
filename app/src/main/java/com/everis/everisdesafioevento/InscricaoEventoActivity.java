@@ -3,6 +3,8 @@ package com.everis.everisdesafioevento;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +31,40 @@ public class InscricaoEventoActivity extends AppCompatActivity {
     Button btnCadastrar;
     long idUsuarioAtivo;
 
+    private TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            checarCamposVazios();
+        }
+    };
+
+    private void checarCamposVazios() {
+        String tedtNome = edtNome.getText().toString();
+        String tedtEmail = edtEmail.getText().toString();
+        String tTelefone = edtTelefone.getText().toString();
+
+        if(tedtNome.equals("")||tedtEmail.equals("")||tTelefone.equals(""))
+
+        {
+            btnCadastrar.setEnabled(false);
+            btnCadastrar.setAlpha(.5f);
+        } else
+
+        {
+            btnCadastrar.setEnabled(true);
+            btnCadastrar.setAlpha(1.0f);
+        }
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,10 +76,10 @@ public class InscricaoEventoActivity extends AppCompatActivity {
         idUsuarioAtivo = extras.getLong("idUsuarioAtivo");
         Evento evento = (Evento) extras.get("eventoSelec");
 
-        txtNomeEvento = (TextView) findViewById(R.id.txtNomeEvento);
-        txtCidadeEData = (TextView) findViewById(R.id.txtCidadeData);
-        txtLocalEHorario = (TextView) findViewById(R.id.txtLocalHorario);
-        qntdVagas = (TextView) findViewById(R.id.ie_txtQtdVagas);
+        txtNomeEvento = findViewById(R.id.txtNomeEvento);
+        txtCidadeEData = findViewById(R.id.txtCidadeData);
+        txtLocalEHorario = findViewById(R.id.txtLocalHorario);
+        qntdVagas = findViewById(R.id.ie_txtQtdVagas);
 
         String cidadeEData = evento.getCidade() + " - " + evento.getData();
         String localEHorario = evento.getLocal() + " - " + evento.getHorario();
@@ -73,6 +109,14 @@ public class InscricaoEventoActivity extends AppCompatActivity {
         btnCadastrar = findViewById(R.id.btnIECadastrar);
 
         edtTelefone.addTextChangedListener(Mask.insert("(##)#####-####", edtTelefone));
+
+        edtNome.addTextChangedListener(textWatcher);
+        edtEmail.addTextChangedListener(textWatcher);
+        edtTelefone.addTextChangedListener(textWatcher);
+
+        btnCadastrar.setEnabled(false);
+        btnCadastrar.setAlpha(.5f);
+
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

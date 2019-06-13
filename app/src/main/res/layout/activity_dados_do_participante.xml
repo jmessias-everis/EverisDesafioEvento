@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InscricaoEventoActivity">
+    tools:context=".DadosDoParticipanteActivity">
 
     <ScrollView
-        android:layout_width="match_parent"
+        android:id="@+id/scrollView4"
+        android:layout_width="406dp"
         android:layout_height="0dp"
         android:layout_marginStart="6dp"
         android:layout_marginTop="80dp"
@@ -16,61 +16,19 @@
         android:layout_marginBottom="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
+            android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtNomeEvento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"
-                android:text="TextView"
-                android:textAlignment="center"
-                android:textColor="@color/verdeBtn"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtCidadeData"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="6dp"
-                android:text="TextView"
-                android:textAlignment="center"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/txtLocalHorario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="6dp"
-                android:text="TextView"
-                android:textAlignment="center"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/ie_txtQtdVagas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="6dp"
-                android:text="TextView"
-                android:textAlignment="center"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/txtCENome"
+                android:id="@+id/txtDPNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -82,7 +40,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/edtIENome"
+                android:id="@+id/edtDPNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -91,12 +49,11 @@
                 android:layout_marginRight="10dp"
                 android:ems="10"
                 android:hint="@string/ie_digite_nome"
-                android:digits="aáâãbcçdeéêfghiîíjklmnoõóôpqrstuúûvwxyzAÁÃÂBCÇDEÉÊFGHIÍÎJKLMNOÓÕÔPQRSTUÚÛVWXYZ "
                 android:inputType="textPersonName"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/txtCELocal"
+                android:id="@+id/txtDPEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -108,7 +65,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/edtIEEmail"
+                android:id="@+id/edtDPEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -121,7 +78,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/txtITelefone"
+                android:id="@+id/txtDPTelefone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -133,7 +90,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/edtIETelefone"
+                android:id="@+id/edtDPTelefone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -145,37 +102,35 @@
                 android:inputType="number"
                 android:textSize="18sp" />
 
-            <Switch
-                android:id="@+id/swConheceTema"
+            <TextView
+                android:id="@+id/txtDPConhecimentoTema"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="6dp"
-                android:checked="false"
-                android:fontFamily="sans-serif-condensed-light"
-                android:splitTrack="false"
-                android:text="@string/ie_sw_conhece_tema"
-                android:textSize="20sp"
-                tools:checked="false" />
+                android:layout_marginRight="10dp"
+                android:textSize="20sp" />
 
             <Button
-                android:id="@+id/btnIECadastrar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:id="@+id/btnDPCadastrar"
+                android:layout_width="69dp"
+                android:layout_height="62dp"
                 android:layout_marginStart="6dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/verdeBtn"
-                android:drawableLeft="@drawable/baseline_person_add_white_18dp"
+                android:drawableStart="@drawable/baseline_undo_white_18dp"
                 android:fontFamily="sans-serif"
-                android:text="@string/ie_bt_inscrever"
                 android:textAllCaps="false"
                 android:textColor="@color/brancoText"
                 android:textSize="20sp" />
 
         </LinearLayout>
     </ScrollView>
+
 </android.support.constraint.ConstraintLayout>
+

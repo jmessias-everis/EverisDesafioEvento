@@ -1,20 +1,26 @@
 package com.everis.everisdesafioevento;
 
 import android.content.Intent;
+import android.drm.DrmStore;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.everis.everisdesafioevento.DAO.UsuarioDAO;
 import com.everis.everisdesafioevento.Domain.Usuario;
 
 public class LoginActivity extends AppCompatActivity {
 
+    Toolbar myToolbar;
     private UsuarioDAO usuarioDAO;
     private Button btnEntrar;
     private EditText edtMatricula;
@@ -55,6 +61,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+//        Criando, referenciando e ativando Display
+//        myToolbar = findViewById(R.id.tool_bar);
+//        ActionBar ab = getSupportActionBar();
+//        ab.setDisplayHomeAsUpEnabled(true);
+
         btnEntrar = (Button) findViewById(R.id.btnEntrar);
         edtMatricula = (EditText) findViewById(R.id.edtMatricula);
         edtEmail = (EditText) findViewById(R.id.edtEmail);
@@ -90,4 +101,24 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.main_menu, menu);
+//        return true;
+//
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()){
+//            case R.id.votar:
+//
+//                Toast.makeText(LoginActivity.this, "Opção Voltar",Toast.LENGTH_SHORT).show();
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//
+//    }
 }

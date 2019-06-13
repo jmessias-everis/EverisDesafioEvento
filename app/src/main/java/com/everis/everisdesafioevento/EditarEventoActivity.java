@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -35,13 +37,13 @@ public class EditarEventoActivity extends AppCompatActivity {
     TextView resumoVagas;
     EditText edtNomeEvento;
     EditText edtLocalEvento;
-    EditText edtCidadeEvento;
     TextView edtDataEvento;
     TextView edtHorarioEvento;
     EditText edtQtdVagas;
     Button btnCancelar;
     Button btnEditar;
     Evento evento;
+    Spinner spnCidade;
     DatePickerDialog datePickerDialog;
 
     private long idUsuarioAtivo;
@@ -73,11 +75,16 @@ public class EditarEventoActivity extends AppCompatActivity {
 
         edtNomeEvento = findViewById(R.id.edtEdENome);
         edtLocalEvento = findViewById(R.id.edtEdELocal);
-        edtCidadeEvento = findViewById(R.id.edtEdECidade);
+        spnCidade = findViewById(R.id.spinner_EECidade);
         edtDataEvento = findViewById(R.id.edtEdEData);
         edtHorarioEvento = findViewById(R.id.edtEdEHorario);
         edtQtdVagas = findViewById(R.id.edtEdEVagas);
         int imagem = (R.id.imgLogo);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.array_cidades, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnCidade.setAdapter(adapter);
 
 //        edtDataEvento.addTextChangedListener(Mask.insert("##/##/####", edtDataEvento));
 //        edtHorarioEvento.addTextChangedListener(Mask.insert("##:##", edtHorarioEvento));
@@ -90,7 +97,10 @@ public class EditarEventoActivity extends AppCompatActivity {
         resumoVagas.setText(resumoDasVagas);
         edtNomeEvento.setText(eventoSelecionado.getNome());
         edtLocalEvento.setText(eventoSelecionado.getLocal());
-        edtCidadeEvento.setText(eventoSelecionado.getCidade());
+
+        int spinnerPosition = adapter.getPosition(eventoSelecionado.getCidade());
+        spnCidade.setSelection(spinnerPosition);
+
         edtDataEvento.setText(eventoSelecionado.getData());
         edtHorarioEvento.setText(eventoSelecionado.getHorario());
         String qVagas = eventoSelecionado.getVagas() + "";
@@ -149,9 +159,8 @@ public class EditarEventoActivity extends AppCompatActivity {
                 EventoDAO eventoDAO = new EventoDAO(getBaseContext());
 //                Evento evento;
 
-
                 String nomeEvento = edtNomeEvento.getText().toString();
-                String cidade = edtCidadeEvento.getText().toString();
+                String cidade = spnCidade.getSelectedItem().toString();
                 String local = edtLocalEvento.getText().toString();
                 String[] string = edtDataEvento.getText().toString().split("/");
                 String dataFormatada = string[2] + "-" + string[1] + "-" + string[0];

@@ -9,9 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -27,11 +29,11 @@ public class CadastroEventoActivity extends AppCompatActivity {
     Button btnCECadastrar;
     Button btnCECancelar;
     EditText edtCEEvento;
-    EditText edtCECidade;
     EditText edtCELocal;
     TextView txtCEData;
     TextView txtCEHora;
     EditText edtCEVagas;
+    Spinner spnCidade;
     private long idUsuarioAtivo;
     DatePickerDialog datePickerDialog;
 
@@ -47,30 +49,29 @@ public class CadastroEventoActivity extends AppCompatActivity {
         @Override
         public void afterTextChanged(Editable editable) {
             checarCamposVazios();
+//            checarSpinner();
         }
     };
 
     private void checarCamposVazios() {
-        String tCEEvento = (String) edtCEEvento.getText().toString();
-        String tCECidade = (String) edtCECidade.getText().toString();
-        String tCELocal = (String) edtCELocal.getText().toString();
-        String tCEData = (String) txtCEData.getText().toString();
-        String tCEHora = (String) txtCEHora.getText().toString();
-        String tCEVagas = (String) edtCEVagas.getText().toString();
+        String tCEEvento = edtCEEvento.getText().toString();
+        String tSpinner = spnCidade.getSelectedItem().toString();
+        String tCELocal = edtCELocal.getText().toString();
+        String tCEData = txtCEData.getText().toString();
+        String tCEHora = txtCEHora.getText().toString();
+        String tCEVagas = edtCEVagas.getText().toString();
 
-        if(tCEEvento.equals("")||tCECidade.equals("")||tCELocal.equals("")
-            ||tCEData.equals("") || tCEHora.equals("") || tCEVagas.equals(""))
-
+        if(tCEEvento.equals("")||tCELocal.equals("")
+            ||tCEData.equals("") || tCEHora.equals("") || tCEVagas.equals("")
+            )
         {
             btnCECadastrar.setEnabled(false);
             btnCECadastrar.setAlpha(.5f);
         } else
-
         {
             btnCECadastrar.setEnabled(true);
             btnCECadastrar.setAlpha(1.0f);
         }
-
 }
 
     @Override
@@ -83,7 +84,7 @@ public class CadastroEventoActivity extends AppCompatActivity {
             idUsuarioAtivo = extras.getLong("idUsuarioAtivo");
         }
         edtCEEvento = findViewById(R.id.edtCENome);
-        edtCECidade = findViewById(R.id.edtCECidade);
+        spnCidade= findViewById(R.id.spinner_CECidade);
         edtCELocal = findViewById(R.id.edtCELocal);
         txtCEData = findViewById(R.id.txCEData);
         txtCEHora = findViewById(R.id.txCEHorario);
@@ -91,11 +92,17 @@ public class CadastroEventoActivity extends AppCompatActivity {
         btnCECadastrar = findViewById(R.id.btnIECadastrar);
         btnCECancelar = findViewById(R.id.btnCECancelar);
 
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.array_cidades, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnCidade.setAdapter(adapter);
+
 //        edtCEData.addTextChangedListener(Mask.insert("##/##/####", edtCEData));
 //        edtCEHora.addTextChangedListener(Mask.insert("##:##", edtCEHora));
 
         edtCEEvento.addTextChangedListener(textWatcher);
-        edtCECidade.addTextChangedListener(textWatcher);
+        String spinner = spnCidade.getSelectedItem().toString();
         edtCELocal.addTextChangedListener(textWatcher);
         txtCEData.addTextChangedListener(textWatcher);
         txtCEHora.addTextChangedListener(textWatcher);
@@ -157,7 +164,7 @@ public class CadastroEventoActivity extends AppCompatActivity {
 
 
                 String nomeEvento = edtCEEvento.getText().toString();
-                String cidade = edtCECidade.getText().toString();
+                String tCECidade = (String) spnCidade.getSelectedItem().toString();
                 String local = edtCELocal.getText().toString();
                 String[] string = txtCEData.getText().toString().split("/");
                 String dataFormatada = string[2] + "-" + string[1] + "-" + string[0];
@@ -165,7 +172,7 @@ public class CadastroEventoActivity extends AppCompatActivity {
                 int vagas = Integer.parseInt(edtCEVagas.getText().toString());
                 int imagem = R.drawable.logo01;
 
-                evento = new Evento(nomeEvento, local, cidade, dataFormatada, hora, imagem, vagas);
+                evento = new Evento(nomeEvento, local, tCECidade, dataFormatada, hora, imagem, vagas);
 
                 if (eventoDAO.salvar(evento)) {
                     Toast.makeText(getApplicationContext(), "EVENTO CADASTRADO!", Toast.LENGTH_LONG).show();

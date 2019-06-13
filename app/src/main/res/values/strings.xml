@@ -28,6 +28,8 @@
     <string name="lp_voltar">Voltar</string>
     <string name="lp_editar">Editar</string>
 
+    <string name="tbVoltar">voltar</string>tbVoltar
+
     <string name="TLogin">Login</string>
     <string name="TEventos">Eventos Everis</string>
     <string name="editar">Editar</string>
@@ -35,17 +37,16 @@
     <string name="excluir">Excluir</string>
     <string name="lp_deletar">Deletar</string>
 
-    <string-array name="Eventos">
-        <item>Evento 01</item>
-        <item>Evento 02</item>
-        <item>Evento 03</item>
-        <item>Evento 04</item>
-        <item>Evento 05</item>
-        <item>Evento 06</item>
-        <item>Evento 07</item>
-        <item>Evento 08</item>
-        <item>Evento 09</item>
-        <item>Evento 10</item>
-
+    <string-array name="array_cidades">
+        <item></item>
+        <item>São Paulo</item>
+        <item>Uberlândia</item>
+        <item>Belo Horizonte</item>
+        <item>Araguari</item>
+        <item>Goiania</item>
+        <item>Araxá</item>
+        <item>Rio de Janeiro</item>
+        <item>Cuiabá</item>
+        <item>Recife</item>
     </string-array>
 </resources>
