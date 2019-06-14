@@ -1,8 +1,13 @@
 package com.everis.everisdesafioevento;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.drm.DrmStore;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -10,10 +15,15 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.Toolbar;
+import android.widget.ImageView;
+import android.view.animation.Animation;
+
 
 import com.everis.everisdesafioevento.DAO.UsuarioDAO;
 import com.everis.everisdesafioevento.Domain.Usuario;
@@ -26,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edtMatricula;
     private EditText edtEmail;
     private EditText edtSenha;
+    private ImageView logoEveris;
 
     private TextWatcher textWatcher = new TextWatcher() {
         @Override
@@ -56,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +77,11 @@ public class LoginActivity extends AppCompatActivity {
 //        myToolbar = findViewById(R.id.tool_bar);
 //        ActionBar ab = getSupportActionBar();
 //        ab.setDisplayHomeAsUpEnabled(true);
+
+        logoEveris = findViewById(R.id.img_login);
+        AlphaAnimation animation = new AlphaAnimation(.1f, 1.0f);
+        animation.setDuration(4000);
+        logoEveris.startAnimation(animation);
 
         btnEntrar = (Button) findViewById(R.id.btnEntrar);
         edtMatricula = (EditText) findViewById(R.id.edtMatricula);

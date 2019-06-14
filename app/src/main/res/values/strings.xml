@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Everis Desafio</string>
+    <string name="app_name">Everis Events</string>
     <string name="ce_evento">Evento</string>
     <string name="ce_nome">Nome do evento</string>
     <string name="ce_local">Local</string>
