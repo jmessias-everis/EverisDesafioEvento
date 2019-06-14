@@ -183,6 +183,5 @@ public class EditarEventoActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }
