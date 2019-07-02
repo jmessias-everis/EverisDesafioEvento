@@ -1,4 +1,4 @@
-package com.everis.everisdesafioevento;
+package com.everis.persistenciaSQLite;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

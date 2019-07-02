@@ -1,4 +1,4 @@
-package com.everis.everisdesafioevento.Domain;
+package com.everis.persistenciaSQLite.Domain;
 
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;

@@ -1,16 +1,14 @@
-package com.everis.everisdesafioevento.Adapter;
+package com.everis.persistenciaSQLite.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.everis.everisdesafioevento.Domain.Evento;
-import com.everis.everisdesafioevento.Domain.Participante;
-import com.everis.everisdesafioevento.R;
+import com.everis.persistenciaSQLite.Domain.Participante;
+import com.everis.persistenciaSQLite.R;
 
 import java.util.ArrayList;
 

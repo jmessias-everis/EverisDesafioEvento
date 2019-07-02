@@ -1,4 +1,4 @@
-package com.everis.everisdesafioevento;
+package com.everis.persistenciaSQLite;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,12 +12,12 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.everis.everisdesafioevento.Domain.Evento;
-import com.everis.everisdesafioevento.Domain.Participante;
-import com.everis.everisdesafioevento.Domain.Registro;
-import com.everis.everisdesafioevento.DAO.ParticipanteDAO;
-import com.everis.everisdesafioevento.DAO.RegistroDAO;
-import com.everis.everisdesafioevento.Mask.Mask;
+import com.everis.persistenciaSQLite.Domain.Evento;
+import com.everis.persistenciaSQLite.Domain.Participante;
+import com.everis.persistenciaSQLite.Domain.Registro;
+import com.everis.persistenciaSQLite.DAO.ParticipanteDAO;
+import com.everis.persistenciaSQLite.DAO.RegistroDAO;
+import com.everis.persistenciaSQLite.Mask.Mask;
 
 public class InscricaoEventoActivity extends AppCompatActivity {
     TextView txtNomeEvento;

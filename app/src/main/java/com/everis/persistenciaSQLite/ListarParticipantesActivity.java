@@ -1,4 +1,4 @@
-package com.everis.everisdesafioevento;
+package com.everis.persistenciaSQLite;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,12 +13,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.everis.everisdesafioevento.Adapter.ParticipanteAdapter;
-import com.everis.everisdesafioevento.DAO.EventoDAO;
-import com.everis.everisdesafioevento.DAO.ParticipanteDAO;
-import com.everis.everisdesafioevento.DAO.RegistroDAO;
-import com.everis.everisdesafioevento.Domain.Evento;
-import com.everis.everisdesafioevento.Domain.Participante;
+import com.everis.persistenciaSQLite.Adapter.ParticipanteAdapter;
+import com.everis.persistenciaSQLite.DAO.EventoDAO;
+import com.everis.persistenciaSQLite.DAO.ParticipanteDAO;
+import com.everis.persistenciaSQLite.DAO.RegistroDAO;
+import com.everis.persistenciaSQLite.Domain.Evento;
+import com.everis.persistenciaSQLite.Domain.Participante;
 
 import java.util.ArrayList;
 import java.util.Collections;

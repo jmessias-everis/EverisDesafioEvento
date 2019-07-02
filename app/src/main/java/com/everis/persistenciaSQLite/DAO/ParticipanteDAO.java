@@ -1,13 +1,12 @@
-package com.everis.everisdesafioevento.DAO;
+package com.everis.persistenciaSQLite.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.everis.everisdesafioevento.Infra.HelperDB;
-import com.everis.everisdesafioevento.Domain.Participante;
+import com.everis.persistenciaSQLite.Infra.HelperDB;
+import com.everis.persistenciaSQLite.Domain.Participante;
 
 import java.util.ArrayList;
 

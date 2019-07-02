@@ -1,4 +1,4 @@
-package com.everis.everisdesafioevento;
+package com.everis.persistenciaSQLite;
 
 import org.junit.Test;
 

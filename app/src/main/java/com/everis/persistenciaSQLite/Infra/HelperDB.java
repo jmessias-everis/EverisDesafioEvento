@@ -1,14 +1,14 @@
-package com.everis.everisdesafioevento.Infra;
+package com.everis.persistenciaSQLite.Infra;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.everis.everisdesafioevento.DAO.EventoDAO;
-import com.everis.everisdesafioevento.DAO.ParticipanteDAO;
-import com.everis.everisdesafioevento.DAO.RegistroDAO;
-import com.everis.everisdesafioevento.DAO.UsuarioDAO;
+import com.everis.persistenciaSQLite.DAO.EventoDAO;
+import com.everis.persistenciaSQLite.DAO.ParticipanteDAO;
+import com.everis.persistenciaSQLite.DAO.RegistroDAO;
+import com.everis.persistenciaSQLite.DAO.UsuarioDAO;
 
 public class HelperDB extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "eventos.db";

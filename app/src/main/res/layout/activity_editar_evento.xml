@@ -89,6 +89,7 @@
                 android:layout_marginRight="10dp"
                 android:ems="10"
                 android:hint="@string/ce_nome"
+                android:maxLength="44"
                 android:inputType="textPersonName" />
 
             <TextView
@@ -109,6 +110,7 @@
                 android:layout_marginRight="10dp"
                 android:ems="10"
                 android:hint="@string/ce_local_evento"
+                android:maxLength="22"
                 android:inputType="textPersonName" />
 
             <TextView

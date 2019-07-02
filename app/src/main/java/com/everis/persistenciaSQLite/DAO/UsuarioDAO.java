@@ -1,13 +1,12 @@
-package com.everis.everisdesafioevento.DAO;
+package com.everis.persistenciaSQLite.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.everis.everisdesafioevento.Domain.Registro;
-import com.everis.everisdesafioevento.Domain.Usuario;
-import com.everis.everisdesafioevento.Infra.HelperDB;
+import com.everis.persistenciaSQLite.Domain.Usuario;
+import com.everis.persistenciaSQLite.Infra.HelperDB;
 
 public class UsuarioDAO {
     public static final String TABLE_USUARIO = "usuario";

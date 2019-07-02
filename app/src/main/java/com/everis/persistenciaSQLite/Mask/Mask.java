@@ -1,16 +1,9 @@
-package com.everis.everisdesafioevento.Mask;
+package com.everis.persistenciaSQLite.Mask;
 
-import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TimePicker;
-
-import com.everis.everisdesafioevento.CadastroEventoActivity;
-
-import java.util.Calendar;
 
 public class Mask {
     TimePickerDialog timePickerDialog;

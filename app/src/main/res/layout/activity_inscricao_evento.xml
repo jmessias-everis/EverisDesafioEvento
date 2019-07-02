@@ -91,6 +91,7 @@
                 android:layout_marginRight="10dp"
                 android:ems="10"
                 android:hint="@string/ie_digite_nome"
+                android:maxLength="44"
                 android:digits="aáâãbcçdeéêfghiîíjklmnoõóôpqrstuúûvwxyzAÁÃÂBCÇDEÉÊFGHIÍÎJKLMNOÓÕÔPQRSTUÚÛVWXYZ "
                 android:inputType="textPersonName"
                 android:textSize="18sp" />

@@ -1,17 +1,8 @@
-package com.everis.everisdesafioevento.Mask;
+package com.everis.persistenciaSQLite.Mask;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.TimePicker;
-
-import com.everis.everisdesafioevento.CadastroEventoActivity;
-import com.everis.everisdesafioevento.Domain.Evento;
-
-import java.util.Calendar;
 
 public class Pickers extends AppCompatActivity {
     DatePickerDialog datePickerDialog;
